@@ -1,0 +1,9 @@
+
+def save_report(name, report_text):
+
+    filename = f"{name}_health_report.txt"
+
+    with open(filename, "w") as file:
+        file.write(report_text)
+
+    print("\nReport saved as:", filename)
