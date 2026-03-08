@@ -1,0 +1,30 @@
+
+def get_health_advice(bmi, hydration_status):
+
+    advice = []
+
+    if bmi < 18.5:
+        advice.append("Consider increasing calorie intake with nutritious foods.")
+
+    elif bmi >= 25 and bmi < 30:
+        advice.append("Regular exercise and balanced diet may help maintain a healthy weight.")
+
+    elif bmi >= 30:
+        advice.append("Consult a healthcare professional for weight management guidance.")
+
+    if hydration_status == "Severe dehydration risk":
+        advice.append("Increase water intake immediately.")
+
+    elif hydration_status == "Moderate dehydration risk":
+        advice.append("Drink more water throughout the day.")
+
+    elif hydration_status == "Mild dehydration risk":
+        advice.append("Try to drink at least one extra glass of water.")
+
+    else:
+        advice.append("Great job staying hydrated.")
+
+    advice.append("Aim for at least 7–9 hours of sleep per night.")
+    advice.append("Regular physical activity improves overall health.")
+
+    return advice
