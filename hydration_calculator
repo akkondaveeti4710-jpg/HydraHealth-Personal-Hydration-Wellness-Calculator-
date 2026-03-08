@@ -1,0 +1,27 @@
+
+def recommended_water(weight_kg, activity_level):
+
+    base = weight_kg * 35 / 1000
+
+    if activity_level == "low":
+        return round(base, 2)
+    elif activity_level == "moderate":
+        return round(base + 0.5, 2)
+    elif activity_level == "high":
+        return round(base + 1.0, 2)
+    else:
+        return round(base, 2)
+
+
+def hydration_status(intake_liters, recommended_liters):
+
+    percent = intake_liters / recommended_liters
+
+    if percent < 0.5:
+        return "Severe dehydration risk"
+    elif percent < 0.8:
+        return "Moderate dehydration risk"
+    elif percent < 1:
+        return "Mild dehydration risk"
+    else:
+        return "Well hydrated"
