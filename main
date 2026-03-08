@@ -1,0 +1,83 @@
+
+from bmi_calculator import calculate_bmi, bmi_category
+from hydration_calculator import recommended_water, hydration_status
+from calorie_calculator import estimate_calories
+from health_advice import get_health_advice
+from report_generator import save_report
+
+
+print("----- Personal Health Calculator -----")
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+gender = input("Enter gender (male/female): ")
+
+height = float(input("Enter height (cm): "))
+weight = float(input("Enter weight (kg): "))
+
+activity = input("Activity level (low/moderate/high): ")
+
+water_intake = float(input("Daily water intake (liters): "))
+
+
+# BMI
+bmi = calculate_bmi(weight, height)
+bmi_cat = bmi_category(bmi)
+
+
+# Water
+recommended = recommended_water(weight, activity)
+hydration = hydration_status(water_intake, recommended)
+
+
+# Calories
+calories = estimate_calories(age, weight, height, gender, activity)
+
+
+# Advice
+advice_list = get_health_advice(bmi, hydration)
+
+
+print("\n----- HEALTH REPORT -----")
+print("Name:", name)
+print("Age:", age)
+
+print("\nBMI:", bmi)
+print("BMI Category:", bmi_cat)
+
+print("\nRecommended Water Intake:", recommended, "L")
+print("Your Water Intake:", water_intake, "L")
+print("Hydration Status:", hydration)
+
+print("\nEstimated Daily Calories:", calories)
+
+print("\nHealth Advice:")
+for tip in advice_list:
+    print("-", tip)
+
+
+report = f"""
+----- HEALTH REPORT -----
+
+Name: {name}
+Age: {age}
+
+BMI: {bmi}
+BMI Category: {bmi_cat}
+
+Recommended Water Intake: {recommended} L
+Your Water Intake: {water_intake} L
+Hydration Status: {hydration}
+
+Estimated Daily Calories: {calories}
+
+Health Advice:
+"""
+
+for tip in advice_list:
+    report += f"- {tip}\n"
+
+save = input("\nSave report to file? (yes/no): ")
+
+if save.lower() == "yes":
+    save_report(name, report)
