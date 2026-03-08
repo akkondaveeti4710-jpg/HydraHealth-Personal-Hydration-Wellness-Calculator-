@@ -1,0 +1,18 @@
+
+def estimate_calories(age, weight, height, gender, activity_level):
+
+    if gender.lower() == "male":
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5
+    else:
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161
+
+    if activity_level == "low":
+        calories = bmr * 1.2
+    elif activity_level == "moderate":
+        calories = bmr * 1.55
+    elif activity_level == "high":
+        calories = bmr * 1.9
+    else:
+        calories = bmr * 1.2
+
+    return round(calories)
